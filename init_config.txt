@@ -6,18 +6,18 @@
 !The first settings are the compiler settings.  Just set this to whatever you want to be invoked as the compiler
 !If you don't have these set up in your path, you can also give full paths to be used
 
-!CC:gcc
-!CPP:g++
-!FC:gfortran
+CC:nvc
+CPP:nvc++
+FC:nvfortran
 
 !In addition to these, you will want to add some flags.
 !Some of the features in the infrastructure use C Pre-Processor directives, so please make sure that is enabled.
 !If enabling them is impossible, the infrastructure will be unable to detect which portions of the tests are causing
 !compilation/runtime errors. 
 
-!CCFlags:-fopenacc -cpp -lm -foffload='-lm'
-!CPPFlags:-fopenacc -cpp -lm -foffload='-lm'
-!FCFlags:-fopenacc -cpp -lm -foffload='-lm'
+CCFlags:-acc -Minfo=all
+CPPFlags:-acc -Minfo=all
+FCFlags:-acc -Minfo=all
 
 !Below are a few more things that should probably be specified.  The script will do its best, but sometimes it will need some help.
 !TestDir:/home/<user>/OpenACCV-V/Tests
@@ -128,7 +128,7 @@
 
 !To specify the output format, you can use the following with the following values (json, html, txt):
 
-!ResultsFormat:json
+ResultsFormat:json
 
 !If you specify the html output format, the file that is output will still be in json format.  The output file should
 !afterward be placed into the directory results_template and renamed to results.json.  The results.html can then be
@@ -178,4 +178,4 @@
 
 !This can be used to test host-fallback on gcc for example with RuntimePrefix:ACC_DEVICE_TYPE=None
 
-!RunAllTests:True
+RunAllTests:True
